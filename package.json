@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "react-native-dotenv": "^3.4.11",
+    "react-native-zeroconf": "^0.13.8"
+  },
+  "devDependencies": {
+    "@types/react-native-zeroconf": "^0.13.1"
+  }
+}
