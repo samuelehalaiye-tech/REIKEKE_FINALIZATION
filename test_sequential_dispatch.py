@@ -4,16 +4,21 @@ import sys
 import django
 from django.utils import timezone
 
-# --- DYNAMIC PATH SETUP ---
+# 1. Path Setup: Point directly to the 'core' folder where manage.py is
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# Point to the 'backend' folder so Python can see 'reikeke_backend'
-BACKEND_DIR = os.path.join(BASE_DIR, 'backend')
+# This builds: C:\Users\Sammy\Documents\reikeke\backend\reikeke_backend\core
+PROJECT_ROOT = os.path.join(BASE_DIR, 'backend', 'reikeke_backend', 'core')
 
-sys.path.insert(0, BACKEND_DIR)
-# Also point to 'core' so it can find 'rides', 'accounts' directly
-sys.path.insert(0, os.path.join(BACKEND_DIR, 'reikeke_backend', 'core'))
+sys.path.insert(0, PROJECT_ROOT)
 
+# 2. Django Setup
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'core.settings')
+django.setup()
+
+# 3. Simple Imports (No long prefixes!)
+from rides.models import RideRequest, Location
+from accounts.models import User
+from locations.models import DriverLocation
 # Initialize Django
 try:
     django.setup()
